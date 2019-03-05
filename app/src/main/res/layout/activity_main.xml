@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="#2c3e50"
     tools:context=".MainActivity">
 
     <TableLayout
@@ -110,10 +110,10 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
-                android:background="@android:color/holo_orange_dark"
-                android:backgroundTint="@color/colorPrimary"
-                android:text="1"
+                android:background="@drawable/rounded_button"
+                android:text="@string/_1"
                 android:textAlignment="center"
+                android:textColor="#bdc3c7"
                 android:textSize="36sp" />
 
             <Button
@@ -162,7 +162,7 @@
                 android:layout_margin="5dp"
                 android:background="@android:color/holo_orange_dark"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="."
+                android:text="@string/dot"
                 android:textAlignment="center"
                 android:textSize="36sp" />
 
@@ -173,7 +173,7 @@
                 android:layout_margin="5dp"
                 android:background="@android:color/holo_orange_dark"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="C"
+                android:text="@string/c"
                 android:textAlignment="center"
                 android:textSize="36sp" />
 
@@ -196,7 +196,7 @@
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="÷"
+            android:text="@string/div"
             android:textAlignment="center"
             android:textSize="36sp" />
 
@@ -207,7 +207,7 @@
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="×"
+            android:text="@string/mult"
             android:textAlignment="center"
             android:textSize="36sp" />
 
@@ -218,7 +218,7 @@
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="–"
+            android:text="@string/sub"
             android:textAlignment="center"
             android:textSize="36sp" />
 
@@ -227,10 +227,10 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="5dp"
-            android:background="@color/colorAccent"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:text="+"
+            android:background="@drawable/rounded_button_op"
+            android:text="@string/add"
             android:textAlignment="center"
+            android:textColor="#bdc3c7"
             android:textSize="36sp" />
 
         <Button
@@ -240,7 +240,7 @@
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="="
+            android:text="@string/equal"
             android:textAlignment="center"
             android:textSize="36sp" />
 
@@ -249,12 +249,14 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="4dp"
-        android:background="@android:color/background_light"
+        android:layout_height="116dp"
+        android:background="#2c3e50"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
         android:text="@string/_0"
         android:textAlignment="textEnd"
-        android:textSize="36sp"
+        android:textColor="#ecf0f1"
+        android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.0"
@@ -290,7 +292,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_dark"
             android:backgroundTint="@color/colorPrimary"
-            android:text="cos"
+            android:text="@string/cos"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -302,7 +304,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_dark"
             android:backgroundTint="@color/colorPrimary"
-            android:text="tan"
+            android:text="@string/tan"
             android:textAlignment="center"
             android:textSize="24sp" />
 
