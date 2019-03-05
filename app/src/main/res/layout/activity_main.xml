@@ -67,7 +67,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btn2"
+                android:id="@+id/btn4"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
@@ -166,13 +166,16 @@
                 android:textAlignment="center"
                 android:textSize="36sp" />
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textOff="DEG"
-                android:textOn="RAD"
-                android:textSize="8sp" />
+            <Button
+                android:id="@+id/btnDot2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_orange_dark"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="C"
+                android:textAlignment="center"
+                android:textSize="36sp" />
 
         </TableRow>
 
@@ -187,36 +190,13 @@
         app:layout_constraintStart_toEndOf="@+id/tableLayout">
 
         <Button
-            android:id="@+id/btnClear"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:text="C"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/btnPlus"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:background="@color/colorAccent"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:text="+"
-            android:textAlignment="center"
-            android:textSize="36sp" />
-
-        <Button
-            android:id="@+id/btnMinus"
+            android:id="@+id/btnDiv"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="5dp"
             android:background="@color/colorAccent"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="–"
+            android:text="÷"
             android:textAlignment="center"
             android:textSize="36sp" />
 
@@ -228,6 +208,28 @@
             android:background="@color/colorAccent"
             android:backgroundTint="@android:color/holo_red_dark"
             android:text="×"
+            android:textAlignment="center"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/btnSub"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="–"
+            android:textAlignment="center"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="+"
             android:textAlignment="center"
             android:textSize="36sp" />
 
