@@ -4,16 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".MainActivity">
 
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="match_constraint"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="180dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.33"
         app:layout_constraintStart_toStartOf="parent">
 
         <TableRow
@@ -138,64 +142,91 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="97dp"
-        android:layout_height="251dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="71dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="35dp">
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toTopOf="@+id/tableLayout">
 
         <Button
-            android:id="@+id/button21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:id="@+id/btnPlus"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="+"
+            android:textAlignment="center"
+            android:textSize="36sp" />
 
         <Button
-            android:id="@+id/button17"
+            android:id="@+id/btnMinus"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="–"
+            android:textAlignment="center"
+            android:textSize="36sp" />
 
         <Button
-            android:id="@+id/button18"
+            android:id="@+id/btnMult"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="×"
+            android:textAlignment="center"
+            android:textSize="36sp" />
 
         <Button
-            android:id="@+id/button19"
+            android:id="@+id/btnMult2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="="
+            android:textAlignment="center"
+            android:textSize="36sp" />
 
-        <Button
-            android:id="@+id/button20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="36dp"
+        android:background="@android:color/background_light"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout" />
 
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/Btns_num"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="221dp"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="h,1:1"
-        tools:layout_editor_absoluteX="327dp"
-        tools:layout_editor_absoluteY="660dp">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout">
 
-    </android.support.v7.widget.GridLayout>
+        <Button
+            android:id="@+id/btnMult3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="36sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
