@@ -9,22 +9,83 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int num1 = 0;
-    int num2 = 0;
+    double num1 = 0;
+    double num2 = 0;
+    boolean dot1 = false;
+    boolean dot2 = false;
+    String zeros = "";
+    
     int op = 0; //1:Add, 2:Subtract, 3:Multiply, 4:Divide
+    double res;
+
+    public static String fmt(double d)
+    {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
+    }
 
     private View.OnClickListener listenerNum = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
             String value = ((Button) v).getText().toString();
-            TextView res = findViewById(R.id.textView);
+            TextView disp = findViewById(R.id.textView);
+
+            if (op == 0 && res != 0) {
+                num1 = 0;
+                res = 0;
+            } else if (op != 0 && res != 0) {
+                num1 = res;
+                res = 0;
+            }
+
+
             if (op == 0) {
-                num1 = Integer.parseInt(Integer.toString(num1).concat(value));
-                res.setText(Integer.toString(num1));
+                if (Integer.parseInt(value) == 0) {
+                    if (num1 % 1 == 0 && !dot1) {
+                        num1 = Double.parseDouble(fmt(num1).concat(value));
+                    } else {
+                        zeros = zeros.concat("0");
+                    }
+                } else {
+                    if (dot1) {
+                        num1 = Double.parseDouble(fmt(num1).concat(".").concat(zeros).concat(value));
+                        dot1 = false;
+                    } else {
+                        num1 = Double.parseDouble(fmt(num1).concat(zeros).concat(value));
+                    }
+                    zeros = "";
+                }
+                if (dot1) {
+                    disp.setText(fmt(num1).concat(".").concat(zeros));
+                } else {
+                    disp.setText(fmt(num1).concat(zeros));
+                }
+
+
             } else {
-                num2 = Integer.parseInt(Integer.toString(num2).concat(value));
-                res.setText(Integer.toString(num2));
+                if (Integer.parseInt(value) == 0) {
+                    if (num2 % 1 == 0 && !dot2) {
+                        num2 = Double.parseDouble(fmt(num2).concat(value));
+                    } else {
+                        zeros = zeros.concat("0");
+                    }
+                } else {
+                    if (dot2) {
+                        num2 = Double.parseDouble(fmt(num2).concat(".").concat(zeros).concat(value));
+                        dot2 = false;
+                    } else {
+                        num2 = Double.parseDouble(fmt(num2).concat(zeros).concat(value));
+                    }
+                    zeros = "";
+                }
+                if (dot2) {
+                    disp.setText(fmt(num2).concat(".").concat(zeros));
+                } else {
+                    disp.setText(fmt(num2).concat(zeros));
+                }
             }
         }
     };
@@ -48,6 +109,11 @@ public class MainActivity extends AppCompatActivity {
         Button btnSub = findViewById(R.id.btnSub);
         Button btnMult = findViewById(R.id.btnMult);
         Button btnDiv = findViewById(R.id.btnDiv);
+        final Button btnEqual = findViewById(R.id.btnEqual);
+        Button btnClear = findViewById(R.id.btnClear);
+        Button btnDot = findViewById(R.id.btnDot);
+        final TextView display = findViewById(R.id.textView);
+        final TextView calculation = findViewById(R.id.textView2);
 
 
         btn0.setOnClickListener(listenerNum);
@@ -60,28 +126,101 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(listenerNum);
         btn8.setOnClickListener(listenerNum);
         btn9.setOnClickListener(listenerNum);
+        btnDot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (op == 0 && num1 % 1 == 0) {
+                    dot1 = true;
+                    display.setText(fmt(num1).concat("."));
+                } else if (op != 0 && num2 % 1 == 0) {
+                    dot2 = true;
+                    display.setText(fmt(num2).concat("."));
+                }
+            }
+        });
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                num1 = 0;
+                num2 = 0;
+                res = 0;
+                op = 0;
+                display.setText("0");
+                calculation.setText("");
+            }
+        });
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (op != 0 && num1 != 0 && num2 != 0) {
+                    btnEqual.performClick();
+                }
                 op = 1;
             }
         });
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (op != 0 && num1 != 0 && num2 != 0) {
+                    btnEqual.performClick();
+                }
                 op = 2;
             }
         });
         btnMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (op != 0 && num1 != 0 && num2 != 0) {
+                    btnEqual.performClick();
+                }
                 op = 3;
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (op != 0 && num1 != 0 && num2 != 0) {
+                    btnEqual.performClick();
+                }
                 op = 4;
+            }
+        });
+        btnEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String sign = "";
+                switch (op) {
+                    case 1:
+                        res = num1 + num2;
+                        sign = " + ";
+                        break;
+                    case 2:
+                        res = num1 - num2;
+                        sign = " - ";
+                        break;
+                    case 3:
+                        res = num1 * num2;
+                        sign = " * ";
+                        break;
+                    case 4:
+                        res = num1 / num2;
+                        sign = " / ";
+                        break;
+                    default:
+
+                        break;
+                }
+
+                display.setText(fmt(res));
+                calculation.setText(fmt(num1)
+                        .concat(sign)
+                        .concat(fmt(num2))
+                        .concat(" =")
+                );
+
+                op = 0;
+                num1 = 0;
+                num2 = 0;
             }
         });
 

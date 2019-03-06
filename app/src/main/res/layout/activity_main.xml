@@ -167,7 +167,7 @@
                 android:textSize="36sp" />
 
             <Button
-                android:id="@+id/btnDot2"
+                android:id="@+id/btnClear"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
@@ -309,5 +309,17 @@
             android:textSize="24sp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textAlignment="textEnd"
+        android:textColor="#bdc3c7"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView" />
 
 </android.support.constraint.ConstraintLayout>
