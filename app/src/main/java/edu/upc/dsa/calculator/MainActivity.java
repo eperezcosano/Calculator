@@ -1,9 +1,11 @@
 package edu.upc.dsa.calculator;
 
+import android.support.v4.math.MathUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     double num2 = 0;
     boolean dot1 = false;
     boolean dot2 = false;
+    String trigo = "";
     String zeros = "";
     int op = 0; //1:Add, 2:Subtract, 3:Multiply, 4:Divide
     double res;
@@ -24,6 +27,43 @@ public class MainActivity extends AppCompatActivity {
         else
             return String.format("%s",d);
     }
+
+    private View.OnClickListener listenerTrigo = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            trigo = ((Button) v).getText().toString();
+            TextView display = findViewById(R.id.textView);
+            TextView calculation = findViewById(R.id.textView2);
+            Switch swRad = findViewById(R.id.swRad);
+            if (res != 0)
+                num1 = res;
+            calculation.setText(trigo.concat("(").concat(fmt(num1)).concat(")"));
+            if (!swRad.isChecked())
+                num1 = Math.toRadians(num1);
+
+            switch (trigo){
+                case "sin":
+                    res = Math.sin(num1);
+                    break;
+                case "cos":
+                    res = Math.cos(num1);
+                    break;
+                case "tan":
+                    res = Math.tan(num1);
+                    break;
+            }
+            res = (double)Math.round(res * 10000d) / 10000d;
+            if (res > 1)
+                res = Double.POSITIVE_INFINITY;
+            display.setText(fmt(res));
+
+            op = 0;
+            num1 = 0;
+            num2 = 0;
+
+        }
+    };
 
     private View.OnClickListener listenerNum = new View.OnClickListener() {
         @Override
@@ -113,7 +153,10 @@ public class MainActivity extends AppCompatActivity {
         Button btnDot = findViewById(R.id.btnDot);
         final TextView display = findViewById(R.id.textView);
         final TextView calculation = findViewById(R.id.textView2);
-
+        final Switch swRad = findViewById(R.id.swRad);
+        Button btnSin = findViewById(R.id.btnSin);
+        Button btnCos = findViewById(R.id.btnCos);
+        Button btnTan = findViewById(R.id.btnTan);
 
         btn0.setOnClickListener(listenerNum);
         btn1.setOnClickListener(listenerNum);
@@ -125,6 +168,10 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(listenerNum);
         btn8.setOnClickListener(listenerNum);
         btn9.setOnClickListener(listenerNum);
+        btnSin.setOnClickListener(listenerTrigo);
+        btnCos.setOnClickListener(listenerTrigo);
+        btnTan.setOnClickListener(listenerTrigo);
+
         btnDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 dot2 = false;
                 res = 0;
                 op = 0;
+                trigo = "";
                 zeros = "";
                 display.setText("0");
                 calculation.setText("");
@@ -194,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sign = "";
+                String sign;
                 switch (op) {
                     case 1:
                         res = num1 + num2;
