@@ -213,7 +213,8 @@ public class MainActivity extends AppCompatActivity {
                         sign = " / ";
                         break;
                     default:
-
+                        res = num1;
+                        sign = " + ";
                         break;
                 }
 
