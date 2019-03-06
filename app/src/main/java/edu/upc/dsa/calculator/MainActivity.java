@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     boolean dot1 = false;
     boolean dot2 = false;
     String zeros = "";
-    
     int op = 0; //1:Add, 2:Subtract, 3:Multiply, 4:Divide
     double res;
 
@@ -143,8 +142,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 num1 = 0;
                 num2 = 0;
+                dot1 = false;
+                dot2 = false;
                 res = 0;
                 op = 0;
+                zeros = "";
                 display.setText("0");
                 calculation.setText("");
             }
@@ -155,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 if (op != 0 && num1 != 0 && num2 != 0) {
                     btnEqual.performClick();
                 }
+                calculation.setText("+");
                 op = 1;
             }
         });
@@ -164,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
                 if (op != 0 && num1 != 0 && num2 != 0) {
                     btnEqual.performClick();
                 }
+                calculation.setText("-");
                 op = 2;
             }
         });
@@ -173,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 if (op != 0 && num1 != 0 && num2 != 0) {
                     btnEqual.performClick();
                 }
+                calculation.setText("*");
                 op = 3;
             }
         });
@@ -182,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 if (op != 0 && num1 != 0 && num2 != 0) {
                     btnEqual.performClick();
                 }
+                calculation.setText("/");
                 op = 4;
             }
         });
