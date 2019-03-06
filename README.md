@@ -1,5 +1,5 @@
-# Calculator
-Simple Android Calculator
+# Simple Android Calculator
+<img src="snapshot.png" alt="alt text" height="250">
 
 # Operations
 * Add
